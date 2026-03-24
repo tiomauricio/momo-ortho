@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="w-full px-4 sm:px-6 xl:px-[150px] pt-4 sm:pt-6 lg:pt-8">
+    <section className="w-full px-4 sm:px-6 lg:px-[3%] 2xl:px-[150px] pt-4 sm:pt-6 lg:pt-10">
       <div className="relative mx-auto max-w-[1620px] overflow-hidden rounded-3xl">
         {/* Background image */}
         <Image

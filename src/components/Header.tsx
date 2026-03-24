@@ -19,53 +19,9 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white">
-      {/* Top utility bar */}
-      <div className="hidden lg:block border-b border-gray-100">
-        <div className="mx-auto max-w-[1620px] px-6 xl:px-[150px]">
-          <div className="flex items-center justify-end gap-6 py-2.5 text-sm font-medium text-foreground">
-            <Link
-              href="#"
-              className="flex items-center gap-1.5 hover:text-teal-dark transition-colors"
-            >
-              <Globe className="h-3 w-3 text-teal" />
-              <span>LANGUAGE</span>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-1.5 hover:text-teal-dark transition-colors"
-            >
-              <Mail className="h-3 w-3 text-teal" />
-              <span>REFERRALS</span>
-            </Link>
-            <div className="flex items-center gap-1.5">
-              <Phone className="h-3 w-3 text-teal" />
-              <div>
-                <span className="text-[8px] font-bold tracking-tight block leading-tight">
-                  Existing Patients
-                </span>
-                <span className="text-sm font-medium leading-tight">
-                  01522 533363
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Phone className="h-3 w-3 text-teal" />
-              <div>
-                <span className="text-[8px] font-bold tracking-tight block leading-tight">
-                  New Patients
-                </span>
-                <span className="text-sm font-medium leading-tight">
-                  01522 533227
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main navigation */}
-      <div className="mx-auto max-w-[1620px] px-4 sm:px-6 xl:px-[150px]">
-        <div className="flex items-center justify-between py-4 lg:py-6">
+      {/* Header content */}
+      <div className="mx-auto max-w-[1620px] px-4 sm:px-6 lg:px-[3%] 2xl:px-[150px]">
+        <div className="flex items-center justify-between py-4 lg:pt-16 lg:pb-0">
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <Image
@@ -78,27 +34,66 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
+          {/* Desktop: utility bar + nav stacked on the right */}
+          <div className="hidden lg:flex flex-col items-end gap-8">
+            {/* Utility bar */}
+            <div className="flex items-end gap-10 text-[14px] font-medium leading-[18px] tracking-[-0.14px] text-[#333333]">
               <Link
-                key={item.label}
-                href={item.href}
-                className="group flex items-center gap-1 px-3 py-2 text-base font-medium text-foreground hover:text-teal-dark transition-colors"
+                href="#"
+                className="flex items-center gap-1 hover:text-teal-dark transition-colors"
               >
-                {item.label}
-                {item.hasDropdown && (
-                  <ChevronDown className="h-3.5 w-3.5 text-teal group-hover:text-teal-dark transition-colors" />
-                )}
+                <Globe className="h-3 w-3 text-teal fill-teal" strokeWidth={0} />
+                <span>LANGUAGE</span>
               </Link>
-            ))}
-            <Link
-              href="/book"
-              className="ml-4 inline-flex items-center justify-center rounded-sm bg-amber px-6 py-2.5 text-base font-bold text-white hover:bg-amber/90 transition-colors"
-            >
-              BOOK A CONSULTATION
-            </Link>
-          </nav>
+              <Link
+                href="#"
+                className="flex items-center gap-1 hover:text-teal-dark transition-colors"
+              >
+                <Mail className="h-3 w-3 text-teal fill-teal" strokeWidth={0} />
+                <span>REFERRALS</span>
+              </Link>
+              <a href="tel:01522533363" className="flex flex-col hover:text-teal-dark transition-colors">
+                <span className="text-[8px] font-bold leading-[10px] tracking-[-0.08px] text-[#333333] ml-4">
+                  Existing Patients
+                </span>
+                <span className="flex items-center gap-1">
+                  <Phone className="h-3 w-3 text-teal fill-teal" strokeWidth={0} />
+                  01522 533363
+                </span>
+              </a>
+              <a href="tel:01522533227" className="flex flex-col hover:text-teal-dark transition-colors">
+                <span className="text-[8px] font-bold leading-[10px] tracking-[-0.08px] text-[#333333] ml-4">
+                  New Patients
+                </span>
+                <span className="flex items-center gap-1">
+                  <Phone className="h-3 w-3 text-teal fill-teal" strokeWidth={0} />
+                  01522 533227
+                </span>
+              </a>
+            </div>
+
+            {/* Main nav */}
+            <nav className="flex items-center gap-1">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="group flex items-center gap-1 px-3 py-2 text-base font-medium text-foreground hover:text-teal-dark transition-colors"
+                >
+                  {item.label}
+                  {item.hasDropdown && (
+                    <ChevronDown className="h-3.5 w-3.5 text-teal group-hover:text-teal-dark transition-colors" />
+                  )}
+                </Link>
+              ))}
+              <Link
+                href="/book"
+                className="ml-4 inline-flex items-center justify-center rounded-sm bg-amber px-4 py-2 text-base font-bold text-white hover:bg-amber/90 transition-colors"
+              >
+                BOOK A CONSULTATION
+              </Link>
+            </nav>
+          </div>
 
           {/* Mobile menu button */}
           <button
